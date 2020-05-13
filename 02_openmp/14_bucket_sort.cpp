@@ -13,13 +13,17 @@ int main() {
   printf("\n");
 
   std::vector<int> bucket(range); 
+#pragma omp parallel for
   for (int i=0; i<range; i++) {
     bucket[i] = 0;
   }
+#pragma omp parallel for shared(bucket)
   for (int i=0; i<n; i++) {
     bucket[key[i]]++;
   }
+#pragma omp parallel for reduction(+:j)
   for (int i=0, j=0; i<range; i++) {
+#pragma omp single
     for (; bucket[i]>0; bucket[i]--) {
       key[j++] = i;
     }
