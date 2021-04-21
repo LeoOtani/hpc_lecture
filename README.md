@@ -1,4 +1,6 @@
 20M30500
+I'm attending the hpc_lecture in 2021.
+
 # hpc_lecture
 
 |          | Topic                                | Sample code               |
